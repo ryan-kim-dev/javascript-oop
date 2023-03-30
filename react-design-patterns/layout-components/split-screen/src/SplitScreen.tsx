@@ -3,8 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface SplitScreenProps {
-  left: React.ComponentType;
-  right: React.ComponentType;
+  children: React.ReactNode[];
   leftWeight: number;
   rightWeight: number;
 }
@@ -18,19 +17,16 @@ const Pane = styled.div<{ weight: number }>`
 `;
 
 const SplitScreen = ({
-  left: Left,
-  right: Right,
+  children,
   leftWeight = 1,
   rightWeight = 1,
 }: SplitScreenProps) => {
+  const [left, right] = children;
+
   return (
     <Container>
-      <Pane weight={leftWeight}>
-        <Left />
-      </Pane>
-      <Pane weight={rightWeight}>
-        <Right />
-      </Pane>
+      <Pane weight={leftWeight}>{left}</Pane>
+      <Pane weight={rightWeight}>{right}</Pane>
     </Container>
   );
 };
