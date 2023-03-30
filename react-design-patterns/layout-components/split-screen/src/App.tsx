@@ -13,7 +13,12 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <SplitScreen left={LeftComponent} right={RightComponent} />
+      <SplitScreen
+        left={LeftComponent}
+        right={RightComponent}
+        leftWeight={1}
+        rightWeight={3}
+      />
     </>
   );
 }
